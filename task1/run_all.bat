@@ -1,4 +1,9 @@
 @echo off
+echo Running E1 baseline
+python train.py --config configs/baseline.yaml data.num_workers=0
+
+echo Running hyperparameter search...
+python experiments/sweep.py --config configs/hyperparam_search.yaml
 
 echo Running E2 scratch...
 python train.py --config configs/scratch.yaml data.num_workers=0
