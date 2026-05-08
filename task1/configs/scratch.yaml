@@ -1,0 +1,42 @@
+# Experiment E2: ResNet-18 trained from scratch (no pretrained weights)
+experiment:
+  name: "E2_scratch"
+  description: "ResNet-18 trained from scratch - pretraining ablation"
+  output_dir: "outputs"
+  seed: 42
+
+model:
+  arch: "resnet18"
+  pretrained: false          # key difference: no ImageNet pretraining
+  num_classes: 37
+  attention: null
+
+data:
+  dataset: "oxford_pets"
+  data_root: "data/oxford_pets"
+  image_size: 224
+  batch_size: 64
+  num_workers: 4
+  val_split: 0.2
+  pin_memory: true
+
+training:
+  epochs: 30
+  optimizer: "sgd"
+  momentum: 0.9
+  weight_decay: 1.0e-4
+  # When training from scratch, use uniform lr for all layers
+  backbone_lr: 1.0e-4
+  head_lr: 1.0e-2
+  scheduler: "cosine"
+  step_size: 10
+  gamma: 0.1
+  warmup_epochs: 0
+  mixed_precision: true
+  gradient_clip: null
+
+logging:
+  use_wandb: true
+  use_swanlab: false
+  project: "pet-classification"
+  log_interval: 10
