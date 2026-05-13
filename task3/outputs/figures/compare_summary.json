@@ -1,0 +1,38 @@
+{
+  "task3_unet_ce": {
+    "best_val_miou": 0.7388659162142481,
+    "final_val_loss": 0.2512850292782853,
+    "test_loss": 0.25444974994977837,
+    "test_pixel_acc": 0.902509047309915,
+    "test_mean_iou": 0.7453500559746898,
+    "test_per_class_iou": {
+      "foreground": 0.8177590473948885,
+      "background": 0.900424596601631,
+      "boundary": 0.5178665239275498
+    }
+  },
+  "task3_unet_dice": {
+    "best_val_miou": 0.752687523617281,
+    "final_val_loss": 0.15211436649163565,
+    "test_loss": 0.14412501521365914,
+    "test_pixel_acc": 0.907286320891943,
+    "test_mean_iou": 0.763891971132292,
+    "test_per_class_iou": {
+      "foreground": 0.8270628476594373,
+      "background": 0.905509014564796,
+      "boundary": 0.5591040511726425
+    }
+  },
+  "task3_unet_ce_dice": {
+    "best_val_miou": 0.7432382620132912,
+    "final_val_loss": 0.4565808781679126,
+    "test_loss": 0.4475805419249702,
+    "test_pixel_acc": 0.9039165863843924,
+    "test_mean_iou": 0.7541485807832826,
+    "test_per_class_iou": {
+      "foreground": 0.8193096701636527,
+      "background": 0.9017675787263034,
+      "boundary": 0.5413684934598917
+    }
+  }
+}

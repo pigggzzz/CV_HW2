@@ -1,0 +1,49 @@
+# Experiment: U-Net trained from scratch with Dice loss only
+experiment:
+  name: "task3_unet_dice"
+  description: "From-scratch U-Net on Oxford-IIIT Pet 3-class segmentation with hand-written Dice loss"
+  output_dir: "outputs"
+  seed: 42
+
+model:
+  arch: "unet"
+  in_channels: 3
+  num_classes: 3
+  base_channels: 64
+  bilinear: false
+
+data:
+  dataset: "oxford_pet_seg"
+  data_root: "data/oxford_pets"
+  image_size: 256
+  batch_size: 16
+  num_workers: 4
+  val_split: 0.15
+  pin_memory: true
+
+loss:
+  type: "dice"
+  ce_weight: 0.0
+  dice_weight: 1.0
+  dice_smooth: 1.0e-6
+  ignore_index: -100
+
+training:
+  epochs: 30
+  optimizer: "adamw"
+  lr: 1.0e-3
+  momentum: 0.9
+  weight_decay: 1.0e-4
+  scheduler: "cosine"
+  step_size: 10
+  gamma: 0.5
+  mixed_precision: true
+  gradient_clip: 1.0
+  val_vis_interval: 5
+
+logging:
+  use_wandb: true
+  use_swanlab: false
+  project: "pet-segmentation"
+  log_interval: 20
+  num_vis_samples: 6
